@@ -16,15 +16,15 @@ document.addEventListener('click', (e) => {
     xc = 0;
   }
 
-  const rightEdge = wall.clientWidth - spiderSize.width;
-  const bottomEdge = wall.clientHeight - spiderSize.height;
+  if (yc < 0) {
+    yc = 0;
+  }
+
+  const rightEdge = coord.width - spiderSize.width;
+  const bottomEdge = coord.height - spiderSize.height;
 
   if (xc > rightEdge) {
     xc = rightEdge;
-  }
-
-  if (yc < 0) {
-    yc = 0;
   }
 
   if (yc > bottomEdge) {
