@@ -3,6 +3,34 @@
 document.addEventListener('click', (e) => {
   const wall = document.querySelector('.wall');
   const spider = document.querySelector('.spider');
+  // Перевірка чи клік всередині стіни
+
+  if (e.target !== wall) {
+    return;
+  }
+
+  const wallRect = { left: wall.offsetLeft, top: wall.offsetTop };
+
+  // const spiderRect = spider.getBoundingClientRect();
+
+  // Використовуй offsetWidth/Height для врахування бордерів
+  let x = e.clientX - wallRect.left - spider.offsetWidth / 2;
+  let y = e.clientY - wallRect.top - spider.offsetHeight / 2;
+
+  // Обмеження з урахуванням бордерів стіни
+  const maxX = wall.offsetWidth - spider.offsetWidth;
+  const maxY = wall.offsetHeight - spider.offsetHeight;
+
+  x = Math.max(0, Math.min(x, maxX));
+  y = Math.max(0, Math.min(y, maxY));
+  spider.style.position = 'absolute';
+  spider.style.left = `${x}px`;
+  spider.style.top = `${y}px`;
+});
+
+/* document.addEventListener('click', (e) => {
+  const wall = document.querySelector('.wall');
+  const spider = document.querySelector('.spider');
 
   spider.style.boxSizing = 'border-box';
 
@@ -44,3 +72,4 @@ document.addEventListener('click', (e) => {
   spider.style.left = xc + 'px';
   spider.style.top = yc + 'px';
 });
+ */
