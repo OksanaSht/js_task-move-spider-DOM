@@ -21,7 +21,7 @@ document.addEventListener('click', (e) => {
   // console.log(xc, yc);
 
   if (xc <= 0) {
-    spiderSize.left = 0;
+    xc = 0;
   }
 
   const rightEdge = wall.clientWidth - spiderSize.width;
@@ -31,7 +31,7 @@ document.addEventListener('click', (e) => {
   }
 
   if (yc < 0) {
-    spiderSize.top = 0;
+    yc = 0;
   }
 
   const bottomEdge = wall.clientHeight - spiderSize.height;
